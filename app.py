@@ -44,7 +44,7 @@ def confirm():
     try:
         db.session.add(new_url)
         db.session.commit()
-        return render_template("confirm.html", url=full_url, short_url=random)
+        return render_template("confirm.html", url=full_url, short_url=random), 201
     except:
         return "There was an error shortening your url"
 
@@ -71,6 +71,16 @@ def get_random_string(length):
     result_str = ''.join(random.choice(letters) for i in range(length))
     print("Random string of length", length, "is:", result_str)
     return result_str
+
+# Invalid URL
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html"), 404
+
+# Internal Server Error
+@app.errorhandler(500)
+def internal_error(e):
+    return render_template("500.html"), 500
 
 ## Main
 if __name__ == "__main__":
