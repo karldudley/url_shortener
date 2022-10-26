@@ -19,7 +19,6 @@ db = SQLAlchemy(app)
 # RESET = "yes"
 # if RESET == "yes":
 with app.app_context():
-    db.drop_all()    
     db.create_all()
 
 # create db model
