@@ -23,7 +23,7 @@ with app.app_context():
 
 # create db model
 class Urls(db.Model):
-    __tablename__ = 'urls'
+    __tablename__ = 'Urls'
     id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(200), unique=True, nullable=False)
     short_url = db.Column(db.String(200), unique=True, nullable=False)
