@@ -18,15 +18,15 @@ db = SQLAlchemy(app)
 
 # RESET = "yes"
 # if RESET == "yes":
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()
 
 # create db model
 class Urls(db.Model):
-    __tablename__ = 'Urls'
+    __tablename__ = 'urls'
     id = db.Column(db.Integer, primary_key=True)
-    url = db.Column(db.String(200), unique=True, nullable=False)
-    short_url = db.Column(db.String(200), unique=True, nullable=False)
+    url = db.Column(db.String(200), nullable=False)
+    short_url = db.Column(db.String(200), nullable=False)
 
     #create a function to return a string when we add something
     def __repr__(self):
