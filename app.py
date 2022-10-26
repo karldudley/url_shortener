@@ -9,7 +9,9 @@ from datetime import datetime
 # create app
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///urls.db' # flask sqlite db
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///urls.db' # flask sqlite db
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://wmejgvpvdgovnd:9269b0c828086d7ac9bc32e7b4b57b7416a6e201aaec3846c02a808cbf750167@ec2-54-163-34-107.compute-1.amazonaws.com:5432/d9eso386clmk45' # heroku postgres db
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialise the db
 db = SQLAlchemy(app)
@@ -22,6 +24,7 @@ with app.app_context():
 
 # create db model
 class Urls(db.Model):
+    __tablename__ = 'urls'
     id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(200), unique=True, nullable=False)
     short_url = db.Column(db.String(200), unique=True, nullable=False)
