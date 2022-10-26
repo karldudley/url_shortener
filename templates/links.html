@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Home
+{% endblock %}
+
+{% block content %}
+    <!-- {% for row in table %}
+         {{ row.url }} - {{ row.short_url }}</h3>
+    {% endfor %} -->
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Url</th>
+            <th scope="col">Tiny Url Path</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for row in table %}
+          <tr>
+            <td>{{ row.url }}</td>
+            <td><a href="{{ row.short_url }}">{{ row.short_url }}</a></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+{% endblock content%}

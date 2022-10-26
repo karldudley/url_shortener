@@ -4,5 +4,7 @@
 {% endblock %}
 
 {% block content %}
-    <h1>{{ url }} successfully shortened to {{ short_url }}</h1>
-{% endblock %}
+    <h1>Tiny URL Successfully Created</h1>
+    <h3>Full URL: {{ url }} </h3>
+    <h3>Tiny URL: <a href="{{ short_url }}">{{ short_url }}</a></h3>
+{% endblock content%}

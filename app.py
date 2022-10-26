@@ -16,11 +16,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Initialise the db
 db = SQLAlchemy(app)
 
-# RESET = "yes"
-# if RESET == "yes":
-# with app.app_context():
-#     db.create_all()
-
 # create db model
 class Urls(db.Model):
     __tablename__ = 'urls'
@@ -60,6 +55,15 @@ def short(path):
         return redirect(link.url)
     else:
         return redirect("/")
+
+@app.route('/links')
+def links():
+    table = Urls.query.all()
+    print(type(table))
+    for url in table:
+        print(url.url)
+    # table = "test"
+    return render_template("links.html", table=table)
     
 def get_random_string(length):
     # choose from all lowercase letter
